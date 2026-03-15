@@ -1,4 +1,4 @@
-name: Dev Trust Scanner
+name: Ex-Ray
 
 on:
   push:
@@ -18,9 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Dev Trust Scanner
+      - name: Run Ex-Ray
         id: scan
-        uses: ymlsurgeon/dev-trust-scanner-action@v1
+        uses: ymlsurgeon/ex-ray-action@v1
         with:
           scan_path: .
           format: sarif
@@ -31,4 +31,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: ${{ steps.scan.outputs.sarif_file }}
-          category: dev-trust-scanner
+          category: ex-ray
